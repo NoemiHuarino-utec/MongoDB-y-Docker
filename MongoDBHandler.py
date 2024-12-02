@@ -1,5 +1,3 @@
-#MongoDBHandler.py
-
 import requests
 from pymongo import MongoClient
 from bson.objectid import ObjectId
@@ -12,12 +10,12 @@ class MongoDBHandler:
         self.products_name = "productos"
         self.connect_mongo()
 
-    # Conectar a MongoDB
+    # Conexión con MongoDB
     def connect_mongo(self):
         try:
             client = MongoClient(self.mongo_uri)
             self.db = client[self.db_name]
-            print(f"Conectado a la base de datos '{self.db_name}' en MongoDB.")
+            print(f"Conectado a la BD '{self.db_name}' en MongoDB.")
         except Exception as e:
             print(f"Error al conectar a MongoDB: {e}")
 
@@ -44,7 +42,7 @@ class MongoDBHandler:
     def insert_categories(self, categories):
         try:
             collection = self.db[self.categories_name]
-            collection.delete_many({})  # Limpia la colección antes de insertar
+            collection.delete_many({}) 
             data = [{"categoria": category} for category in categories]
             collection.insert_many(data)
             print(f"Se insertaron {len(data)} categorías en MongoDB.")

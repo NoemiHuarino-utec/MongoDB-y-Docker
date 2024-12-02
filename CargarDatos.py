@@ -1,5 +1,3 @@
-#CargarDatos.py
-
 from MongoDBHandler import MongoDBHandler
 
 # Uso de la clase
